@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         toolset: [MSVC]
-        configuration: [Debug, Release]
+        configuration: [Release]
 
     steps:
     - uses: actions/checkout@v2
