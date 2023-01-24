@@ -18,9 +18,9 @@ jobs:
       
     - name: Build
       shell: cmd
-      run: msbuild VAC-Bypass.sln /p:Platform=x86 /p:Configuration=Release ${{ env.toolset }}
+      run: msbuild VAC-Bypass.sln /p:Platform=x86 /p:Configuration=${{ matrix.configuration }} ${{ env.toolset }}
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
         name: VAC-Disabler
-        path: Release\Loader.exe
+        path: ${{ matrix.configuration }}\Loader.exe
