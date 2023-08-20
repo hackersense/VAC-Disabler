@@ -17,6 +17,7 @@ HMODULE WINAPI hooks::initialize(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFl
 
 		auto* const h_steamservice = GetModuleHandleW(L"steamservice.dll");
 
+		/*
 		auto* const dw_process = memory::pattern_scan_ida(h_steamservice, "55 8B EC 81 EC 2C 03 00 00 8D");
 		if (!dw_process)
 		{
@@ -27,7 +28,7 @@ HMODULE WINAPI hooks::initialize(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFl
 			o_process = reinterpret_cast<process_t>(memory::tramp_hook(reinterpret_cast<std::uintptr_t*>(dw_process), reinterpret_cast<std::uintptr_t>(hk_runprocces_log), 5));
 			LOG_DEBUG("Hooked target: VAC_PROCESS_LOG");
 		}
-
+		
 		auto* const dw_loading = memory::pattern_scan_ida(h_steamservice, "55 8B EC 83 EC 28 53 56 8B 75");
 		if (!dw_loading)
 		{
@@ -38,7 +39,7 @@ HMODULE WINAPI hooks::initialize(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFl
 			o_loading = reinterpret_cast<loading_t>(memory::tramp_hook(reinterpret_cast<std::uintptr_t*>(dw_loading), reinterpret_cast<std::uintptr_t>(hk_loading), 6));
 			LOG_DEBUG("Hooked target: VAC_LOADING");
 		}
-
+		*/
 		auto* const dw_calling = memory::pattern_scan_ida(h_steamservice, "55 8B EC 6A FF 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? 64 A1 00 00 00 00 50 64 89 25 00 00 00 00 83 EC 6C");
 		if (!dw_calling)
 		{
